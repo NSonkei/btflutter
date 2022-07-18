@@ -53,20 +53,29 @@ class Tree {
     List<Node> listNodeTemp = [];
     //Store element which isn't children
     List<Node> listNodeStack = [];
+    //Store element which is traversed
+    List<Node> storeNodeTraversed = [];
     //Init list Temperary
     listNodeTemp.add(baseNode);
 
     while (true) {
+      //Get last node in listNodeTemp to traver
       Node currentNode = listNodeTemp.elementAt(listNodeTemp.length - 1);
       int numberOfChild = currentNode.children.length;
-      if (numberOfChild == 0) {
+      //If currentNode was traversed
+      if (storeNodeTraversed.contains(currentNode)) {
         listNodeStack.add(currentNode);
         listNodeTemp.removeLast();
-        if (listNodeTemp.length == 0) break;
+        if (listNodeTemp.length == 0) {
+          break;
+        } else {
+          continue;
+        }
       } else {
         for (var i = 0; i < numberOfChild; i++) {
           listNodeTemp.add(currentNode.children[i]);
         }
+        storeNodeTraversed.add(currentNode);
       }
     }
     //Result should be reversed of listNodeStack
