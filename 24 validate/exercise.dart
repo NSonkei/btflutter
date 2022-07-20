@@ -49,6 +49,7 @@ bool validate(Node node) {
       if (currentNode.left!.data > currentNode.data) {
         return false;
       } else {
+        //Set parent for node
         currentNode.left!.parent = currentNode;
         queue.add(currentNode.left!);
       }
@@ -58,6 +59,7 @@ bool validate(Node node) {
       if (currentNode.right!.data < currentNode.data) {
         return false;
       } else {
+        //Set parent for node
         currentNode.right!.parent = currentNode;
         queue.add(currentNode.right!);
       }
