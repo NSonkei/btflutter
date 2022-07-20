@@ -90,6 +90,7 @@ class LinkedList extends Iterable {
   void insertAt(int data, int index) {
     Node newNode = Node(data);
     if (index < 0) {
+      //nothing
     } else if (index >= sizes) {
       insertLast(data);
     } else {
